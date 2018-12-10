@@ -6,31 +6,38 @@ using UnityEngine.UI;
 
 public class PlayerRCasting : MonoBehaviour 
 {
-	public GameObject ActionDisplay;
-	public GameObject ActionText;
+	//Testing
+	public static float DistanceFromTarget;
+	public float toTarget;
+
+	public Text ActionDisplay;
+	public Text ActionText;
 	public GameObject ExtraCursor;
 
 	void Update () 
 	{
+		DistanceFromTarget = toTarget;
 		RaycastHit hit;
 		if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),
 						 out hit , 3f))
 		{		
+			toTarget = hit.distance;
 			if(hit.collider.gameObject.tag == "playerDoor")
 			{
-				ActionDisplay.SetActive(true);
-				ActionText.SetActive(true);
+				ActionDisplay.text = "[E]";				
+				ActionText.text = "Open Door";
 				ExtraCursor.SetActive(true);
 				if(Input.GetButtonDown("Confirm"))
 					hit.collider.gameObject.GetComponent<DoorManage>().DoorCheck();
 			}
 			else
 			{
-				ActionDisplay.SetActive(false);
-				ActionText.SetActive(false);
+				ActionDisplay.text = "";
+				ActionText.text = "";
 				ExtraCursor.SetActive(false);
 				
 			}
+
 		}
 	}
 }
