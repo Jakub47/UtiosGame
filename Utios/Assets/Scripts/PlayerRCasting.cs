@@ -18,26 +18,12 @@ public class PlayerRCasting : MonoBehaviour
 	{
 		DistanceFromTarget = toTarget;
 		RaycastHit hit;
-		if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),
-						 out hit , 3f))
-		{		
+		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward),
+						 out hit, 3f)) {		
 			toTarget = hit.distance;
-			if(hit.collider.gameObject.tag == "playerDoor")
-			{
-				ActionDisplay.text = "[E]";				
-				ActionText.text = "Open Door";
-				ExtraCursor.SetActive(true);
-				if(Input.GetButtonDown("Confirm"))
-					hit.collider.gameObject.GetComponent<DoorManage>().DoorCheck();
-			}
-			else
-			{
-				ActionDisplay.text = "";
-				ActionText.text = "";
-				ExtraCursor.SetActive(false);
-				
-			}
-
+		} else 
+		{
+			toTarget = 0;
 		}
 	}
 }

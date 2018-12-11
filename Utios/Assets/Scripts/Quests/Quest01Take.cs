@@ -17,26 +17,31 @@ public class Quest01Take : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		distance = PlayerRCasting.DistanceFromTarget;  
+		distance = PlayerRCasting.DistanceFromTarget; 
 	}
 
 	void OnMouseOver()
 	{
-		if (distance <= 2) 
+		if (distance <= 2 && distance > 0) 
 		{
 			ActionDisplay.text = "[E]";				
 			ActionText.text = "Open Quest Board";
-			ExtraCursor.SetActive(true);
-			
-			if(Input.GetButtonDown("Confirm"))
-			{
+			ExtraCursor.SetActive (true);
+		
+			if (Input.GetButtonDown ("Confirm")) {
 				ActionDisplay.text = string.Empty;				
 				ActionText.text = string.Empty;
-				ExtraCursor.SetActive(false);
-				UIText.SetActive(true);
-				noticeCam.SetActive(true);
-				ThePlayer.SetActive(false);
+				ExtraCursor.SetActive (false);
+				UIText.SetActive (true);
+				noticeCam.SetActive (true);
+				ThePlayer.SetActive (false);
 			}
+		}
+		else if (distance <= 0) 
+		{
+			ActionDisplay.text = string.Empty;				
+			ActionText.text = string.Empty;
+			ExtraCursor.SetActive (false);
 		}
 	}
 
@@ -44,7 +49,7 @@ public class Quest01Take : MonoBehaviour
 	{
 		ActionDisplay.text = string.Empty;				
 		ActionText.text = string.Empty;
-
+		ExtraCursor.SetActive (false);
 	}
 	
 }
