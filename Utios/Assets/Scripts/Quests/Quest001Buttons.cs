@@ -12,6 +12,9 @@ public class Quest001Buttons : MonoBehaviour
 	public GameObject Objective01;
 	public GameObject Objective02;
 	public GameObject Objective03;
+	public GameObject ExMark;
+	public GameObject TheNotice;
+	public GameObject NoticeTrigger;
 
 
 	public void AcceptQuest()

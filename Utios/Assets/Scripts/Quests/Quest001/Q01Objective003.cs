@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Q01Objective002 : MonoBehaviour 
+public class Q01Objective003 : MonoBehaviour 
 {
 	public float TheDistance;
-	public GameObject TreasureChest;
+	public GameObject FakeSword;
+	public GameObject RealSword;
+
 	public Text ActionDisplay;
 	public Text ActionText;
 	public GameObject ExtraCursor;
-	public GameObject TakeSword;
 
 	public GameObject TheObjective;
 	public int ClosedObjective;
@@ -39,7 +40,7 @@ public class Q01Objective002 : MonoBehaviour
 		if (TheDistance <= 2 && TheDistance > 0) 
 		{
 			ActionDisplay.text = "[E]";				
-			ActionText.text = "Open Quest Board";
+			ActionText.text = "Take Sword";
 			ExtraCursor.SetActive (true);
 		}
 
@@ -48,8 +49,8 @@ public class Q01Objective002 : MonoBehaviour
 			if(TheDistance <= 2 && TheDistance > 0)
 			{
 				this.GetComponent<BoxCollider>().enabled = false;
-				TreasureChest.GetComponent<Animation>().Play("ChestOpen");
-				TakeSword.SetActive(true);
+				FakeSword.SetActive(false);
+				RealSword.SetActive(true);
 				ClosedObjective = 3;
 				ActionDisplay.text = "";				
 				ActionText.text = "";
