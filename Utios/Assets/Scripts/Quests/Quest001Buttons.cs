@@ -28,6 +28,10 @@ public class Quest001Buttons : MonoBehaviour
 
 	IEnumerator SetQuestUI()
 	{
+		ExMark.SetActive (false);
+		TheNotice.SetActive (false);
+		NoticeTrigger.SetActive (false);
+
 		ActiveQuestBox.GetComponent<Text> ().text = "My First weapon";
 		Objective01.GetComponent<Text> ().text = "Reach the old house";
 		Objective02.GetComponent<Text> ().text = "Open the chest";

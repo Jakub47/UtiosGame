@@ -17,6 +17,10 @@ public class Q01Objective003 : MonoBehaviour
 	public GameObject TheObjective;
 	public int ClosedObjective;
 
+	public GameObject ChestBlock;
+	public GameObject QuestComplete;
+	public GameObject ExMark;
+
 	void Update () 
 	{
 		TheDistance = PlayerRCasting.DistanceFromTarget;
@@ -55,6 +59,8 @@ public class Q01Objective003 : MonoBehaviour
 				ActionDisplay.text = "";				
 				ActionText.text = "";
 				ExtraCursor.SetActive(false);
+				ExMark.SetActive(true);
+				QuestComplete.SetActive(true);
 			}
 		}
 	}
