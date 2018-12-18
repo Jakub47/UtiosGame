@@ -19,7 +19,6 @@ public class Quest001Buttons : MonoBehaviour
 
 	public void AcceptQuest()
 	{
-		Debug.Log ("dasd");
 		ThePlayer.SetActive (true);
 		NoticeCam.SetActive (false);
 		UIQuest.SetActive (false);

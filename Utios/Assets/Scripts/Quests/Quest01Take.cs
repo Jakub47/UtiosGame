@@ -24,11 +24,14 @@ public class Quest01Take : MonoBehaviour
 	{
 		if (distance <= 2 && distance > 0) 
 		{
+			AttackBlock.BlockSword = 1;
 			ActionDisplay.text = "[E]";				
 			ActionText.text = "Open Quest Board";
 			ExtraCursor.SetActive (true);
 		
 			if (Input.GetButtonDown ("Confirm")) {
+				//Because we are in menu and we must listen for event of Fire1
+				AttackBlock.BlockSword = 2;
 				ActionDisplay.text = string.Empty;				
 				ActionText.text = string.Empty;
 				ExtraCursor.SetActive (false);
@@ -39,6 +42,7 @@ public class Quest01Take : MonoBehaviour
 		}
 		else if (distance <= 0) 
 		{
+			AttackBlock.BlockSword = 0;
 			ActionDisplay.text = string.Empty;				
 			ActionText.text = string.Empty;
 			ExtraCursor.SetActive (false);
@@ -47,6 +51,7 @@ public class Quest01Take : MonoBehaviour
 
 	void OnMouseExit()
 	{
+		AttackBlock.BlockSword = 0;
 		ActionDisplay.text = string.Empty;				
 		ActionText.text = string.Empty;
 		ExtraCursor.SetActive (false);
