@@ -6,10 +6,17 @@ public class SkeletonEnemy : MonoBehaviour
 {
 	public int EnemyHealth = 10;
 	public Animator anim;
+	public int BasedXp = 10;
+	public int CalculatedExp;
 
 	void DeductPoints(int DamageAmount)
 	{
 		EnemyHealth -= DamageAmount;
+		if (EnemyHealth <= 0) 
+		{
+			CalculatedExp = BasedXp * GlobalLevel.CurrentLevel;
+			GlobalEXP.CurrentExp += CalculatedExp;
+		}
 	}
 
 	//If the enemy health is 0 destroy
@@ -19,13 +26,11 @@ public class SkeletonEnemy : MonoBehaviour
 		{
 			StartCoroutine(DeathSkeleton());
 			anim.gameObject.GetComponent<chase>().Dead();
-
 		}
 	}
 
 	IEnumerator DeathSkeleton()
 	{
-		GlobalEXP.CurrentExp += 10;
 		anim.SetBool ("isIdle", false);
 		anim.SetBool ("isWalking", false);
 		anim.SetBool ("isAttacking", false);
