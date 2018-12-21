@@ -8,10 +8,18 @@ public class SwingSword : MonoBehaviour
 	public int SwordStatus;
 	public AudioClip SwingSound;
 
+	GameObject Player;
+
+	void Start()
+	{
+		Player = GameObject.FindGameObjectWithTag ("Player");
+	}
+
 	void Update () 
 	{
-		if (Input.GetButtonDown ("Fire1") && SwordStatus == 0 && AttackBlock.BlockSword == 0) 
+		if (Input.GetButtonDown ("Fire1") && SwordStatus == 0 && AttackBlock.BlockSword == 0 && Inventory.stamina > 0) 
 		{
+			Player.GetComponent<Inventory>().SendMessage("SomeAction");
 			StartCoroutine(SwingSwordFunction());
 		}
 	}

@@ -13,7 +13,7 @@ public class InflictDamage : MonoBehaviour
 
 	void Update () 
 	{
-		if (Input.GetButtonDown ("Fire1")) 
+		if (Input.GetButtonDown ("Fire1") && Inventory.stamina > 0) 
 		{
 			RaycastHit hit;
 			if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out hit))

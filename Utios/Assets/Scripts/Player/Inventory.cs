@@ -21,6 +21,9 @@ public class Inventory : MonoBehaviour
 	public static int mana = 5;
 	public static int stamina = 5;
 
+	//private
+	private float Timer;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -33,7 +36,16 @@ public class Inventory : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (stamina < 5) 
+		{
+			Timer += Time.deltaTime;
+			if(Timer >= 4)
+			{
+				stamina++;
+				staminaStatusGUI.texture = staminaStatus[stamina];
+				Timer = 0.0f;
+			}
+		}
 	}
 
 	public void HeathPickUp()
@@ -46,6 +58,28 @@ public class Inventory : MonoBehaviour
 		Debug.Log("health is " + health);
 		Debug.Log("mana is " + mana);
 		Debug.Log("stamina is " + stamina);
+	}
 
+	public void TakeDamage()
+	{
+		if(health < 5)
+		{
+			health--;
+			healthStatusGUI.texture = healthStatus[health];
+		}
+
+		if (health == 0) 
+		{
+			Debug.Log("------------------------------------YOU ARE DEAD!---------------------");
+		}
+	}
+
+	public void SomeAction()
+	{
+		if (stamina < 5) 
+		{
+			stamina--;
+			staminaStatusGUI.texture = staminaStatus [stamina];
+		}
 	}
 }
